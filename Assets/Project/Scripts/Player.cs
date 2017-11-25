@@ -6,7 +6,11 @@ public class Player : MonoBehaviour {
 
 	public GameObject ball;
 	public GameObject playerCamera;
+
 	public float ballDistance = 2f;
+	public float ballThrowingForce = 2f;
+
+	public bool holdingBall = true;
 
 	// Use this for initialization
 	void Start () {
@@ -15,6 +19,14 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		ball.transform.position = playerCamera.transform.position + playerCamera.transform.forward * ballDistance;
+		if (holdingBall) {
+			ball.transform.position = playerCamera.transform.position + playerCamera.transform.forward * ballDistance;
+
+			if (Input.GetMouseButtonDown(0)) {
+				holdingBall = false;
+				ball.GetComponent<Rigidbody> ().useGravity = true;
+				ball.GetComponent<Rigidbody> ().AddForce (playerCamera.transform.forward * ballThrowingForce);
+			}
+		}
 	}
 }
