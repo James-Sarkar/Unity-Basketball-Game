@@ -11,7 +11,7 @@ public class Ball : MonoBehaviour {
 		trailObject.SetActive (false);
 	}
 
-	// Use this to active trail object
+	// Use this to activate trail object
 	public void ActivateTrail () {
 		trailObject.SetActive (true);
 	}
