@@ -10,7 +10,9 @@ public class ScoreArea : MonoBehaviour {
 	void Start () {
 		effectObject.SetActive (false);
 	}
-		
+
+	// Use this to trigger the score effect only when  
+	// the basketball goes through the hoop
 	void OnTriggerEnter (Collider otherCollider) {
 		if (otherCollider.GetComponent<Ball> () != null) {
 			effectObject.SetActive (true);
